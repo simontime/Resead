@@ -2,7 +2,7 @@
 
 int main()
 {
-	sead::HashCRC32 h;
+	sead::HashCRC16 h;
 	h.initialize();
 	printf("0x%x\n", h.calcStringHash("test"));
 	printf("0x%x\n", h.calcHash("test", 4));
