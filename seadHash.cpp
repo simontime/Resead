@@ -31,27 +31,7 @@ namespace sead
 	u16 HashCRC16::calcHash(void const *data, u32 length)
 	{
 		if (!sInitialized)
-		{
-			for (int i = 0; i < 256; i++)
-			{
-				u16 val = i;
-
-				for (int j = 0; j < 8; j++)
-				{
-					if (val & 1)
-					{
-						val >>= 1;
-						val ^= 0xA001;
-					}
-					else
-						val >>= 1;
-				}
-
-				sTable[i] = val;
-			}
-
-			sInitialized = true;
-		}
+			initialize();
 
 		u16 hash = 0;
 
@@ -64,27 +44,7 @@ namespace sead
 	u16 HashCRC16::calcStringHash(char const *string)
 	{
 		if (!sInitialized)
-		{
-			for (int i = 0; i < 256; i++)
-			{
-				u16 val = i;
-
-				for (int j = 0; j < 8; j++)
-				{
-					if (val & 1)
-					{
-						val >>= 1;
-						val ^= 0xA001;
-					}
-					else
-						val >>= 1;
-				}
-
-				sTable[i] = val;
-			}
-
-			sInitialized = true;
-		}
+			initialize();
 
 		u16 hash = 0;
 
@@ -123,27 +83,7 @@ namespace sead
 	u32 HashCRC32::calcHash(void const *data, u32 length)
 	{
 		if (!sInitialized)
-		{
-			for (int i = 0; i < 256; i++)
-			{
-				u32 val = i;
-
-				for (int j = 0; j < 8; j++)
-				{
-					if (val & 1)
-					{
-						val >>= 1;
-						val ^= 0xEDB88320;
-					}
-					else
-						val >>= 1;
-				}
-
-				sTable[i] = val;
-			}
-
-			sInitialized = true;
-		}
+			initialize();
 
 		u32 hash = ~0;
 
@@ -156,27 +96,7 @@ namespace sead
 	u32 HashCRC32::calcStringHash(char const *string)
 	{
 		if (!sInitialized)
-		{
-			for (int i = 0; i < 256; i++)
-			{
-				u32 val = i;
-
-				for (int j = 0; j < 8; j++)
-				{
-					if (val & 1)
-					{
-						val >>= 1;
-						val ^= 0xEDB88320;
-					}
-					else
-						val >>= 1;
-				}
-
-				sTable[i] = val;
-			}
-
-			sInitialized = true;
-		}
+			initialize();
 
 		u32 hash = ~0;
 

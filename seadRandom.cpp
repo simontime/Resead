@@ -4,12 +4,7 @@ namespace sead
 {
 	void Random::init()
 	{
-		u32 ticks = GetTickCount(); // nn::os::GetSystemTick()
-
-		mContext[0] = 0x6C078965 * (ticks       ^ (ticks       >> 30)) + 1;
-		mContext[1] = 0x6C078965 * (mContext[0] ^ (mContext[0] >> 30)) + 2;
-		mContext[2] = 0x6C078965 * (mContext[1] ^ (mContext[1] >> 30)) + 3;
-		mContext[3] = 0x6C078965 * (mContext[2] ^ (mContext[2] >> 30)) + 4;
+		init(GetTickCount());
 	}
 
 	void Random::init(u32 seed)
